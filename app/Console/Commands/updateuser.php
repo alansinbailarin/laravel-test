@@ -30,7 +30,8 @@ class updateuser extends Command
         $users = User::all();
 
         // Iterate the users
-        foreach ($users as $user) {
+        foreach ($users as $i => $user) {
+            $i = $i + 1;
             // Assign an first name randomly
             $user->name = fake()->firstName();
             // Assign an last name randomly
@@ -40,7 +41,7 @@ class updateuser extends Command
 
             $user->save();
 
-            $this->info("User updated successful: {$user->name} {$user->lastname}, timezone: {$user->timezone}");
+            $this->info("[$i] Name: {$user->name} {$user->lastname}, timezone: {$user->timezone}");
         }
 
         $this->info("All users updated randomly");
